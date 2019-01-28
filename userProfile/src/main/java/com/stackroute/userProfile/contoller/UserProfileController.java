@@ -120,7 +120,7 @@ public class UserProfileController {
     }
 
     /* HTTP exception message definition for deleting the user by contact detail. */
-    @ApiOperation(value = "Delete track", response = Iterable.class)
+    @ApiOperation(value = "deleteTheUserByContact", response = Iterable.class)
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Successfully retrieved list"),
             @ApiResponse(code = 401, message = "You are not authorized to view the resource"),
@@ -129,7 +129,7 @@ public class UserProfileController {
     })
 
      /* Delete user profile from the database. */
-    @DeleteMapping("track")
+    @DeleteMapping("deleteUserByContact")
     public ResponseEntity<?> deleteUserbyContact(@RequestParam int userContact) throws UserContactNotFoundException {
         List<UserProfile> user1=userProfileService.deleteUserbyContact(userContact);
         ResponseEntity responseEntity= new ResponseEntity<String>("Success: User profile is deleted",
@@ -138,7 +138,7 @@ public class UserProfileController {
     }
 
     /* HTTP exception message definition for deleting the user by mail Id. */
-    @ApiOperation(value = "Delete track", response = Iterable.class)
+    @ApiOperation(value = "deleteTheUserByMail", response = Iterable.class)
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Successfully retrieved list"),
             @ApiResponse(code = 401, message = "You are not authorized to view the resource"),
@@ -147,7 +147,7 @@ public class UserProfileController {
     })
 
     /* Delete user profile from the database based on user mail id. */
-    @DeleteMapping("track")
+    @DeleteMapping("deleteUserByMail")
     public ResponseEntity<?> deleteUserbyMail(@RequestParam String userMail) throws UserMailNotFoundException {
         List<UserProfile> user1=userProfileService.deleteUserbyMail(userMail);
         ResponseEntity responseEntity= new ResponseEntity<String>("Success: User profile is deleted",
