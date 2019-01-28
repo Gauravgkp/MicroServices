@@ -1,5 +1,10 @@
 package com.stackroute.userProfile.service;
 
+import com.stackroute.userProfile.domain.UserProfile;
+import com.stackroute.userProfile.exception.UserContactNotFoundException;
+import com.stackroute.userProfile.exception.UserMailNotFoundException;
+import com.stackroute.userProfile.exception.UserProfileAlreadyExistsException;
+import com.stackroute.userProfile.exception.UserProfileNotFoundException;
 import com.stackroute.userProfile.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +27,7 @@ import java.util.Optional;
 
         @Override
         public UserProfile saveTheUser(UserProfile userProfile) throws UserProfileAlreadyExistsException {
-                if (userRepository.existsById(userprofile.getUserId())) {
+                if (userRepository.existsById(userProfile.getUserId())) {
                     throw new UserProfileAlreadyExistsException("user already exists");
                 }
                 userRepository.save(userProfile);
@@ -32,35 +37,66 @@ import java.util.Optional;
 
 
         @Override
-        public List<UserProfile> getUserByMail(String mail) throws UserMailNotFoundExeption {
-            return null;
+        public UserProfile getUserByMail(String mail) throws UserMailNotFoundException {
+            if(!userRepository.equals(getUserByMail(mail))){
+
+                throw new UserMailNotFoundException("user mail not found exception");
+            }
+            return userRepository.findByUseremail(mail);
         }
 
         @Override
-        public List<UserProfile> getUserByContact(int contact) throws UserContactNotFoundExeption {
-            return null;
+        public UserProfile getUserByContact(int contact) throws UserContactNotFoundException {
+
+            if(!userRepository.equals(getUserByContact(contact))){
+                throw new  UserContactNotFoundException("user contact not found");
+            }
+
+            return userRepository.findByUserContact(contact);
         }
 
         @Override
-        public List<UserProfile> getAllUser(UserProfile userProfile) {
-            return null;
-        }
+        public List<UserProfile> getAllUser() throws UserProfileNotFoundException {
+                List<UserProfile> userlist = userRepository.findAll();
+                if (userlist.isEmpty() || userlist == null) {
+                    throw new UserProfileNotFoundException("Error while returning the tracks");
+                }
+                return userlist;
+            }
+//
+//        @Override
+//        public UserProfile updateUser(String mail, int contact) throws UserProfileNotFoundException {
+//            return null;
+//        }
 
-        @Override
-        public UserProfile updateUser(String Mail, int contact) throws UserProfileNotFoundExeption {
-            return null;
-        }
+
+//        @Override
+//        public UserProfile updateUser(String Mail, int contact) throws UserProfileNotFoundException {
+//            if(!userRepository.contains(getUserByMail(Mail)){
+//                throw new UserProfileNotFoundException("user mail is not found");
+//            }
+//            userRepository.
+//        }
 
         @Override
         public List<UserProfile> deleteUserbyContact(int userContact) throws UserContactNotFoundException {
-            return null;
+            if(!userRepository.equals(getUserByContact(userContact))){
+                throw new UserContactNotFoundException("user contact is not present");
+            }
+            userRepository.deleteByUserContact(userContact);
+            return userRepository.findAll();
         }
 
         @Override
         public List<UserProfile> deleteUserbyMail(String userMail) throws UserMailNotFoundException {
-            return null;
-        }
+            if(!userRepository.equals(getUserByMail(userMail))){
+               throw new UserMailNotFoundException("user mail is not present");
+
+            }
+             userRepository.delete(getUserByMail(userMail));
+            return userRepository.findAll();
 
 
+    }
     }
 

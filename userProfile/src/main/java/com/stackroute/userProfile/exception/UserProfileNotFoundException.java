@@ -4,13 +4,13 @@ package com.stackroute.userProfile.exception;
  * custom exception handler that handeles exception if the
  * track already exists
  */
-public class TrackNotFoundExeption extends Exception {
+public class UserProfileNotFoundException extends Exception {
 
     String message;//This is message that is showed
 
-    public TrackNotFoundExeption(){}
+    public UserProfileNotFoundException(){}
 
-    public TrackNotFoundExeption(String message){
+    public UserProfileNotFoundException(String message){
         super(message);//Setting message to string value thrown by Service layer while throwing exception
     }
 }
