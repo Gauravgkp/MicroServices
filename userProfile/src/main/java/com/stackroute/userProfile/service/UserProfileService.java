@@ -13,7 +13,7 @@ public interface UserProfileService {
     public List<UserProfile> getAllUser() throws UserProfileNotFoundException;
     public UserProfile getUserByMail(String userMail) throws UserMailNotFoundException;
     public UserProfile getUserByContact(int userContact) throws UserContactNotFoundException;
-//    public UserProfile updateUser(String mail, int userContact) throws UserProfileNotFoundExeption;
+    public UserProfile updateUser(String mail, int userContact) throws UserProfileNotFoundException;
     public List<UserProfile> deleteUserbyContact(int userContact) throws UserContactNotFoundException;
     public List<UserProfile> deleteUserbyMail(String userMail) throws UserMailNotFoundException;
 }

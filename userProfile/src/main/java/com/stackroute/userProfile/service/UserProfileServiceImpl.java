@@ -63,20 +63,20 @@ import java.util.Optional;
                 }
                 return userlist;
             }
-//
-//        @Override
-//        public UserProfile updateUser(String mail, int contact) throws UserProfileNotFoundException {
-//            return null;
-//        }
 
 
-//        @Override
-//        public UserProfile updateUser(String Mail, int contact) throws UserProfileNotFoundException {
-//            if(!userRepository.contains(getUserByMail(Mail)){
-//                throw new UserProfileNotFoundException("user mail is not found");
-//            }
-//            userRepository.
-//        }
+
+        @Override
+        public UserProfile updateUser(String Mail, int contact) throws UserProfileNotFoundException {
+            if(userRepository.findByUseremail(Mail)==null){
+                throw new UserProfileNotFoundException("user mail is not found");
+            }
+            UserProfile user= new UserProfile();
+            user.setUserContact(123456789);
+            return user;
+
+
+        }
 
         @Override
         public List<UserProfile> deleteUserbyContact(int userContact) throws UserContactNotFoundException {
