@@ -17,7 +17,7 @@
       <module name="configuration" target="11" />
       <module name="muzix" target="1.8" />
       <module name="muzixapplication" target="11" />
-      <module name="registry" target="11" />
+      <module name="registry" target="1.8" />
       <module name="userProfile" target="11" />
     </bytecodeTargetLevel>
   </component>
