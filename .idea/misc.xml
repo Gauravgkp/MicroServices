@@ -4,10 +4,11 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/userProfile/pom.xml" />
-        <option value="$PROJECT_DIR$/TrackService/pom.xml" />
         <option value="$PROJECT_DIR$/../docker_test/pom.xml" />
         <option value="$PROJECT_DIR$/configuration/pom.xml" />
         <option value="$PROJECT_DIR$/registry/pom.xml" />
+        <option value="$PROJECT_DIR$/apigateway/pom.xml" />
+        <option value="$PROJECT_DIR$/TrackService/pom.xml" />
       </list>
     </option>
   </component>
