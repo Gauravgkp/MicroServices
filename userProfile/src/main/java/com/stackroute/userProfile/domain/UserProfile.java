@@ -29,8 +29,8 @@ public class UserProfile {
     /* userName is used to store the user name. */
     private String userName;
 
-    /* useremail is used to store the user email address. */
-    private String useremail;
+    /* userMail is used to store the user email address. */
+    private String userMail;
 
     @Override
     public String toString() {
@@ -39,7 +39,7 @@ public class UserProfile {
                 ", userAge=" + userAge +
                 ", userContact=" + userContact +
                 ", userName='" + userName + '\'' +
-                ", useremail='" + useremail + '\'' +
+                ", useremail='" + userMail + '\'' +
                 '}';
     }
 }
